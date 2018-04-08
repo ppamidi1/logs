@@ -2,7 +2,7 @@
 
 import logtools
 import sys
-
+REMOVELOGS=True
 rlmid=sys.argv[1]
 today=logtools.Today()
 logdates = logtools.FindUniqueLogDates(rlmid)
@@ -12,7 +12,7 @@ for logdate in logdates:
     if logdate == today:
         print("Leaving out today's files")
     else:
-        logtools.PackAllFiles(rlmid,logdate,False)
+        logtools.PackAllFiles(rlmid,logdate,REMOVELOGS)
 
 print( logtools.Yesterday())
 yl=logtools.YesterLogFiles(rlmid)
