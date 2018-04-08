@@ -2,9 +2,12 @@
 
 import logtools
 rlmid="RL00001"
-print (logtools.Today())
+today=logtools.Today()
 logdates = logtools.FindUniqueLogDates(rlmid)
 print(logdates)
 for logdate in logdates:
     print( "Date : %s" % logdate)
-    logtools.PackAllFiles(rlmid,logdate,False)
+    if logdate == today:
+        print("Leaving out today's files")
+    else:
+        logtools.PackAllFiles(rlmid,logdate,False)
