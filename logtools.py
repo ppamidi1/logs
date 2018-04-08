@@ -38,8 +38,6 @@ def PackAllFiles(pn,dt,rm):
     zipfilename="%s/%s.zip" % (pn,dt)
     filestozip=glob.glob("%s/%s*.log" % (pn,dt))
     print("Creating %s " % zipfilename)
-    print(filestozip)
-    print("-------")
     with zipfile.ZipFile(zipfilename,'w') as savefile:
         for fz in filestozip:
             savefile.write(fz,os.path.basename(fz))
