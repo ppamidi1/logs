@@ -20,7 +20,11 @@ def Yesterday():
 def YesterLogFiles(pn):
     slog = "%s/%s_*stats.log" %(pn,Yesterday())
     ylog = "%s/%s_[0-9][0-9][0-9][0-9].log" % (pn,Yesterday())
-    return [glob.glob(slog),glob.glob(ylog)]
+    slogs = glob.glob(slog)
+    ylogs = glob.glob(ylog)
+    if len(slogs) > 0 or len(ylogs) > 0:
+        return glob.glob(slog)+glob.glob(ylog)
+    return []
 
 def FindUniqueLogDates(pn):
     all = "%s/*.log" % (pn)
