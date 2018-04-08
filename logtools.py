@@ -18,8 +18,8 @@ def Yesterday():
     return ydstr
 
 def YesterLogFiles(pn):
-    slog = "%s/%s_*stats.log" %(pn,Yesterday())
-    ylog = "%s/%s_[0-9][0-9][0-9][0-9].log" % (pn,Yesterday())
+    slog = "%s/journal/%s_*stats.log" %(pn,Yesterday())
+    ylog = "%s/journal/%s_[0-9][0-9][0-9][0-9].log" % (pn,Yesterday())
     slogs = glob.glob(slog)
     ylogs = glob.glob(ylog)
     if len(slogs) > 0 or len(ylogs) > 0:
@@ -27,7 +27,7 @@ def YesterLogFiles(pn):
     return []
 
 def FindUniqueLogDates(pn):
-    all = "%s/*.log" % (pn)
+    all = "%s/journal/*.log" % (pn)
     uniqdates=[]
     allfiles=glob.glob(all)
     for fn in allfiles:
@@ -39,8 +39,8 @@ def FindUniqueLogDates(pn):
     return uniqdates
 
 def PackAllFiles(pn,dt,rm):
-    zipfilename="%s/%s.zip" % (pn,dt)
-    filestozip=glob.glob("%s/%s*.log" % (pn,dt))
+    zipfilename="%s/journal/%s.zip" % (pn,dt)
+    filestozip=glob.glob("%s/journal/%s*.log" % (pn,dt))
     print("Creating %s " % zipfilename)
     with zipfile.ZipFile(zipfilename,'w') as savefile:
         for fz in filestozip:

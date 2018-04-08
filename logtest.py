@@ -1,7 +1,9 @@
 #!/usr/bin/env python3
 
 import logtools
-rlmid="RL00001"
+import sys
+
+rlmid=sys.argv[1]
 today=logtools.Today()
 logdates = logtools.FindUniqueLogDates(rlmid)
 print(logdates)
