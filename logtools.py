@@ -50,5 +50,6 @@ def PackAllFiles(pn,dt,rm):
                 os.remove(fz)
                 
 def IdentifyRLMs(rootfolder):
-    rlmfolders=glob.glob("%s/RL*)
-                      
+    print("Root folder %s" %  rootfolder)
+    rlmfolders=glob.glob("%s/RL*" % rootfolder)
+    return rlmfolders 

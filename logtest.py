@@ -3,6 +3,7 @@
 import logtools
 import sys
 REMOVELOGS=True
+
 rootfolder=sys.argv[1]
 
 def ProcessRLM(rlmid):
@@ -25,6 +26,7 @@ def ProcessRLM(rlmid):
 
 today=logtools.Today()
 rlmfolders=logtools.IdentifyRLMs(rootfolder)
+print(rlmfolders)
 for rlmf in rlmfolders:
     ProcessRLM(rlmf)
 
