@@ -48,3 +48,7 @@ def PackAllFiles(pn,dt,rm):
             print("Added %s" % fz)
             if rm:
                 os.remove(fz)
+                
+def IdentifyRLMs(rootfolder):
+    rlmfolders=glob.glob("%s/RL*)
+                      
