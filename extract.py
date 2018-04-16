@@ -1,4 +1,4 @@
-import os
+ import os
 import json
 import time
 
@@ -6,7 +6,7 @@ def find():
     d = os.listdir()
     RLM = []
     for dirs in d:
-        if(("RL0" in dirs) and ".txt" not in dirs):
+        if(("RL0" in dirs or "TU0" in dirs) and ".txt" not in dirs):
             RLM.append(dirs)
     return(RLM)
 
