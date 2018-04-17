@@ -65,7 +65,8 @@ class RenderLogs(object):
                 print ('RLname : %s Reboot : %d Uptime : %d' % (f,reboots,upTime))
                 timestamp = int(time.time())
                 lines = [
-                    'RLname.%s.UpTime %d %d' % (f, upTime, timestamp)
+                    'RLname.%s.UpTime %d %d' % (f, upTime, timestamp),
+                    'RLname.%s.Restarts %s %d' % (f, reboots, timestamp)
                     ]
                 message = '\n'.join(lines) + '\n'
                 print(message)
