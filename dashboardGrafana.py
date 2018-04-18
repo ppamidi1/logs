@@ -51,7 +51,7 @@ class RenderLogs(object):
         d = os.listdir()
         delay = 1
         for files in d:
-            if (("RL" in files and ".txt" in files) and len(files) > 0 ):
+            if (("RL" in files and ".txt" in files)):
                 data = json.load(open(files))   
                 f = files[0:7]
                 rc = int(data[f][3].get('rc'))
