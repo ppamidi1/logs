@@ -1,4 +1,4 @@
-import sys
+iimport sys
 import time
 import os
 import socket
@@ -22,6 +22,7 @@ class RenderLogs(object):
         Return(s):
         None
         """
+
 
         CARBON_SERVER = '172.16.1.149'
         CARBON_PORT = 2003
@@ -54,15 +55,16 @@ class RenderLogs(object):
             if (("RL" in files and ".txt" in files)):
                 data = json.load(open(files))   
                 f = files[0:7]
-                rc = int(data[f][3].get('rc'))
-                vst = int(data[f][3].get('vst'))
-                nmt = int(data[f][3].get('nmt'))
-                frc = int(data[f][3].get('frc'))
+                if f in data:
+                    rc = int(data[f][3].get('rc'))
+                    vst = int(data[f][3].get('vst'))
+                    nmt = int(data[f][3].get('nmt'))
+                    frc = int(data[f][3].get('frc'))
 
-                reboots = rc/((vst+1)/(3600*24))
-                upTime = (1-(nmt-vst)/nmt)*100
-                #return(f,getReboots(rc,vst),getUpTime(nmt,vst),getFilesPerDay(frc,vst))
-                print ('RLname : %s Reboot : %d Uptime : %d' % (f,reboots,upTime))
+                    reboots = rc/((vst+1)/(3600*24))
+                    upTime = (1-(nmt-vst)/nmt)*100
+                    #return(f,getReboots(rc,vst),getUpTime(nmt,vst),getFilesPerDay(frc,vst))
+                    print ('RLname : %s Reboot : %d Uptime : %d' % (f,reboots,upTime))
                 timestamp = int(time.time())
                 lines = [
                     'RLname.%s.UpTime %d %d' % (f, upTime, timestamp),
