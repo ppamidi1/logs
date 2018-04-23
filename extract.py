@@ -21,7 +21,7 @@ def getStatLogs(RLM):
                 if ('stats.log' in files and '.zip' not in files):
                     stats.append(files)
                     stats.sort()
-            if(len(stats) != 1):
+            if(len(stats) > 1):
                 del stats[-1]
                 f = stats[-1]
                 statLogs = convert(rl,f)
