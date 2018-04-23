@@ -26,30 +26,25 @@ class RenderLogs(object):
         self.sock = socket.socket()        
         self.sock.connect((CARBON_SERVER, CARBON_PORT))
 
-    def getReboots(rc, vst):        
+    def getReboots(rc, vst):
         reboots = rc/((vst+1)/(3600*24))
         return reboots
 
     def getUpTime(nmt, vst):
         upTime = (1-(nmt-vst)/nmt)*100
         return upTime
-    
-    def getFilesPerDay(frc, vst):
-        files = frc/(vst/(3600*24))        return files
-    
-     def send_data_to_graphite(self):
-        """
-        Return(s):
-        None
-        """
-        #ip = self.console_ip.replace('.', '_')
 
+    def getFilesPerDay(frc, vst):
+        files = frc/(vst/(3600*24))
+        return files
+
+    def send_data_to_graphite(self):
         extract.main()
         d = os.listdir()
         delay = 1
         for files in d:
             if (("RL" in files or "TU" in files) and ".txt" in files):
-                data = json.load(open(files))   
+                data = json.load(open(files))
                 f = files[0:7]
                 if f in data:
                     rc = int(data[f][3].get('rc'))
@@ -85,6 +80,6 @@ if __name__ == '__main__':
             performance.send_data_to_graphite()
             break;
     except KeyboardInterrupt:
-        print("Key Pressed...")
+            print("Key Pressed...")
     finally:
         print("Script exited!!!")
