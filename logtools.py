@@ -51,5 +51,5 @@ def PackAllFiles(pn,dt,rm):
                 
 def IdentifyRLMs(rootfolder):
     print("Root folder %s" %  rootfolder)
-    rlmfolders=glob.glob("%s/RL*" % rootfolder)
+    rlmfolders=glob.glob("%s/*00*" % rootfolder)
     return rlmfolders 
